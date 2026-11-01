@@ -569,6 +569,18 @@ class PostScreen extends StatelessWidget {
                     const Spacer(),
                     primary('Post check-in', uiOnly),
                     gap(8),
+                    Center(
+                      child: TextButton(
+                        onPressed: () => go(context, '/camera'),
+                        child: const Text(
+                          'Retake',
+                          style: TextStyle(
+                            color: muted,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
