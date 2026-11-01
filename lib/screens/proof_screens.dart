@@ -115,6 +115,8 @@ class SignInScreen extends StatelessWidget {
                     gap(6),
                     field('••••••••', password: true),
                     gap(22),
+                    primary('Sign in', () => go(context, '/today')),
+                    gap(12),
                   ],
                 ),
               ),
