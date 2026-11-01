@@ -83,3 +83,15 @@ Widget chip(String title, {bool private = false}) => Container(
   ),
   child: label(title, size: 11, color: private ? muted : green),
 );
+Widget avatar(String name) => CircleAvatar(
+  radius: 20,
+  backgroundColor: switch (name) {
+    'Omar' => const Color(0xFFCD8415),
+    'Latrell' => const Color(0xFF7060A9),
+    _ => green,
+  },
+  child: Text(
+    name.substring(0, 1),
+    style: const TextStyle(fontSize: 16, color: Colors.white),
+  ),
+);
