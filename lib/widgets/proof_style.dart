@@ -21,3 +21,20 @@ Text label(
   ),
 );
 Widget gap([double height = 14]) => SizedBox(height: height);
+Widget card(Widget child, {EdgeInsets padding = const EdgeInsets.all(16)}) =>
+    Container(
+      padding: padding,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: line.withValues(alpha: .6)),
+        boxShadow: [
+          BoxShadow(
+            color: ink.withValues(alpha: .035),
+            blurRadius: 5,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: child,
+    );
