@@ -762,6 +762,38 @@ class WeekScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                gap(14),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    for (int day = 1; day <= 7; day++)
+                      Column(
+                        children: [
+                          label(
+                            ['M', 'T', 'W', 'Th', 'F', 'Sa', 'Su'][day - 1],
+                            color: muted,
+                            size: 11,
+                          ),
+                          gap(8),
+                          SizedBox(
+                            width: 19,
+                            height: 19,
+                            child:
+                                checkInsFor(g).any((c) => c.dayOfWeek == day)
+                                    ? Container(
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: green,
+                                      ),
+                                    )
+                                    : CustomPaint(
+                                      painter: DashedBorder(radius: 10),
+                                    ),
+                          ),
+                        ],
+                      ),
+                  ],
+                ),
               ],
             ),
           ),
