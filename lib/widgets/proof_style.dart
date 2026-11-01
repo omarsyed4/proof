@@ -95,3 +95,19 @@ Widget avatar(String name) => CircleAvatar(
     style: const TextStyle(fontSize: 16, color: Colors.white),
   ),
 );
+// The mockups use these color blocks in place of photos.
+Widget photo({bool second = false, double? height}) => Container(
+  height: height,
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(10),
+    gradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors:
+          second
+              ? [const Color(0xFFE8E2D3), const Color(0xFFCEC09B)]
+              : [const Color(0xFFD9EEDB), const Color(0xFFA8CEB0)],
+    ),
+  ),
+);
+
