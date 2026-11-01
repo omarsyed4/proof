@@ -685,7 +685,55 @@ class FeedScreen extends StatelessWidget {
 class FriendsScreen extends StatelessWidget {
   const FriendsScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Friends',
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          label('Your group · ${acceptedFriends.length} people', color: muted),
+          gap(10),
+          card(
+            Column(
+              children: [
+                for (int i = 0; i < acceptedFriends.length; i++) ...[
+                  if (i > 0) const Divider(height: 20, color: line),
+                  Row(
+                    children: [
+                      avatar(acceptedFriends[i].displayName),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: label(
+                          acceptedFriends[i].displayName,
+                          size: 16,
+                          bold: true,
+                        ),
+                      ),
+                      chip('Accepted'),
+                    ],
+                  ),
+                ],
+              ],
+            ),
+          ),
+          gap(14),
+          label('Add by username', size: 12),
+          gap(6),
+          field('username'),
+          gap(14),
+          primary('Send request', uiOnly),
+          gap(12),
+          Center(
+            child: label(
+              'Groups work best with 3 to 5 people.',
+              color: muted,
+              size: 13,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 class WeekScreen extends StatelessWidget {
