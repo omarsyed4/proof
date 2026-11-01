@@ -830,6 +830,11 @@ class RemindersScreen extends StatelessWidget {
           Column(
             children: [
               _setting('Max per day', '${reminderSettings.maxPerDay}'),
+              const Divider(height: 22, color: line),
+              _setting(
+                'Quiet hours',
+                '${reminderSettings.quietHoursStart} – ${reminderSettings.quietHoursEnd}',
+              ),
             ],
           ),
         ),
