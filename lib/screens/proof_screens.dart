@@ -307,6 +307,17 @@ class GoalsScreen extends StatelessWidget {
             ),
             gap(14),
           ],
+          SizedBox(
+            width: double.infinity,
+            height: 48,
+            child: CustomPaint(
+              painter: DashedBorder(),
+              child: TextButton(
+                onPressed: () => go(context, '/add-goal'),
+                child: const Text('+  Add a goal'),
+              ),
+            ),
+          ),
         ],
       ),
     ),
