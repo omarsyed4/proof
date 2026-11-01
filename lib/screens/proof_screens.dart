@@ -685,7 +685,18 @@ class FeedScreen extends StatelessWidget {
 class FriendsScreen extends StatelessWidget {
   const FriendsScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Friends',
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          label('Your group · ${acceptedFriends.length} people', color: muted),
+          gap(10),
+        ],
+      ),
+    ),
+  );
 }
 
 class WeekScreen extends StatelessWidget {
