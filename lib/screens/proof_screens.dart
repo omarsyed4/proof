@@ -857,6 +857,26 @@ class RemindersScreen extends StatelessWidget {
             ],
           ),
         ),
+        gap(14),
+        label('PHOTOS', color: muted, size: 13),
+        gap(12),
+        card(
+          Column(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: InkWell(
+                  onTap: uiOnly,
+                  child: label(
+                    'Delete my check-ins',
+                    color: const Color(0xFFBD341F),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        gap(14),
       ],
     ),
   );
