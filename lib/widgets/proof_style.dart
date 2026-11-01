@@ -75,3 +75,11 @@ Widget field(String hint, {String? value, bool password = false}) =>
         hintStyle: const TextStyle(color: Color(0xFF8F9B95), fontSize: 15),
       ),
     );
+Widget chip(String title, {bool private = false}) => Container(
+  padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 3),
+  decoration: BoxDecoration(
+    color: private ? const Color(0xFFEEF1EF) : pale,
+    borderRadius: BorderRadius.circular(20),
+  ),
+  child: label(title, size: 11, color: private ? muted : green),
+);
