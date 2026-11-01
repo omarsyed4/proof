@@ -337,6 +337,18 @@ class AddGoalScreen extends StatelessWidget {
           gap(6),
           field('', value: myGoals.first.name),
           gap(14),
+          label('Times this week', size: 12),
+          gap(7),
+          Row(
+            children: [
+              _step('−'),
+              const SizedBox(width: 12),
+              _step('${myGoals.first.targetCount}', strong: true),
+              const SizedBox(width: 12),
+              _step('+'),
+            ],
+          ),
+          gap(14),
         ],
       ),
     ),
