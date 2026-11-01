@@ -111,3 +111,5 @@ Widget photo({bool second = false, double? height}) => Container(
   ),
 );
 
+// Leave action buttons visible for now; they do nothing in this checkpoint.
+void uiOnly() {}
