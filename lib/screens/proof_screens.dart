@@ -612,6 +612,10 @@ class FeedScreen extends StatelessWidget {
                       second: c.photoUrl == 'demo:sand',
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
+                    child: Column(children: [_friendRow(c)]),
+                  ),
                 ],
               ),
               padding: EdgeInsets.zero,
