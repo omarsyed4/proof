@@ -327,7 +327,135 @@ class GoalsScreen extends StatelessWidget {
 class AddGoalScreen extends StatelessWidget {
   const AddGoalScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Add a goal',
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          label('Goal name', size: 12),
+          gap(6),
+          field('', value: myGoals.first.name),
+          gap(14),
+          label('Times this week', size: 12),
+          gap(7),
+          Row(
+            children: [
+              _step('−'),
+              const SizedBox(width: 12),
+              _step('${myGoals.first.targetCount}', strong: true),
+              const SizedBox(width: 12),
+              _step('+'),
+            ],
+          ),
+          gap(14),
+          label('Proof', size: 12),
+          gap(6),
+          Row(
+            children: [
+              Expanded(child: _proof('Photo', 'default', true)),
+              const SizedBox(width: 12),
+              Expanded(child: _proof('Confirm', 'no camera', false)),
+            ],
+          ),
+          gap(14),
+          label('Who can see this', size: 12),
+          gap(6),
+          card(
+            Column(
+              children: [
+                for (final u in acceptedFriends)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 23,
+                          height: 23,
+                          decoration: BoxDecoration(
+                            color:
+                                viewers(myGoals.first).contains(u)
+                                    ? green
+                                    : Colors.white,
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(
+                              color:
+                                  viewers(myGoals.first).contains(u)
+                                      ? green
+                                      : line,
+                            ),
+                          ),
+                          child:
+                              viewers(myGoals.first).contains(u)
+                                  ? const Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                    size: 17,
+                                  )
+                                  : null,
+                        ),
+                        const SizedBox(width: 12),
+                        label(u.displayName, size: 16),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          gap(14),
+          label('Show misses to them?', size: 12),
+          gap(7),
+          Row(
+            children: [
+              const Icon(Icons.radio_button_unchecked, size: 21, color: line),
+              const SizedBox(width: 7),
+              label('Yes'),
+              const SizedBox(width: 22),
+              const Icon(Icons.radio_button_checked, size: 21, color: green),
+              const SizedBox(width: 7),
+              label('No'),
+            ],
+          ),
+          gap(26),
+          primary('Pause this week', uiOnly, outlined: true),
+          gap(16),
+          primary('Save', uiOnly),
+        ],
+      ),
+    ),
+  );
+  Widget _step(String title, {bool strong = false}) => Container(
+    width: 58,
+    height: 46,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      border: Border.all(color: line),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: label(
+      title,
+      size: 18,
+      color: strong ? ink : const Color(0xFF95A19A),
+      bold: strong,
+    ),
+  );
+  Widget _proof(String title, String subtitle, bool selected) => Container(
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: selected ? pale : Colors.white,
+      borderRadius: BorderRadius.circular(9),
+      border: Border.all(color: selected ? green : line),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        label(title, size: 17),
+        gap(4),
+        label(subtitle, size: 12, color: muted),
+      ],
+    ),
+  );
 }
 
 class CameraScreen extends StatelessWidget {
