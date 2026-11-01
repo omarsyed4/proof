@@ -173,3 +173,65 @@ final reactions = [
     DateTime(2026, 9, 16, 16, 14),
   ),
 ];
+// A request by itself doesn't make someone a friend.
+bool isAcceptedFriend(String userId) {
+  for (final friendship in friendships) {
+    if (friendship.status != 'accepted') continue;
+
+    final sentByMe =
+        friendship.requesterId == 'you' && friendship.addresseeId == userId;
+    final sentToMe =
+        friendship.addresseeId == 'you' && friendship.requesterId == userId;
+    if (sentByMe || sentToMe) return true;
+  }
+  return false;
+}
+
+List<User> get acceptedFriends =>
+    users.where((user) => isAcceptedFriend(user.id)).toList();
+
+List<Goal> get myGoals => goals.where((goal) => goal.userId == 'you').toList();
+
+List<CheckIn> checkInsFor(Goal goal) =>
+    checkIns.where((checkIn) => checkIn.goalId == goal.id).toList();
+
+User userFor(String id) => users.firstWhere((user) => user.id == id);
+
+Goal goalFor(CheckIn checkIn) =>
+    goals.firstWhere((goal) => goal.id == checkIn.goalId);
+
+List<User> viewers(Goal goal) {
+  final sharedIds =
+      goalShares
+          .where((share) => share.goalId == goal.id)
+          .map((share) => share.viewerUserId)
+          .toSet();
+  return acceptedFriends
+      .where((friend) => sharedIds.contains(friend.id))
+      .toList();
+}
+
+List<CheckIn> get friendCheckIns {
+  final visible = <CheckIn>[];
+  for (final checkIn in checkIns) {
+    final goal = goalFor(checkIn);
+    if (!isAcceptedFriend(goal.userId)) continue;
+
+    // Being friends isn't enough; this goal also has to be shared with me.
+    final sharedWithMe = goalShares.any(
+      (share) => share.goalId == goal.id && share.viewerUserId == 'you',
+    );
+    if (sharedWithMe) visible.add(checkIn);
+  }
+  return visible;
+}
+
+User ownerOf(CheckIn checkIn) => userFor(goalFor(checkIn).userId);
+
+String timeOf(CheckIn checkIn) {
+  final time = checkIn.checkinAt;
+  final hour = time.hour % 12;
+  final minute = time.minute.toString().padLeft(2, '0');
+  final period = time.hour >= 12 ? 'p.m.' : 'a.m.';
+  return '${hour == 0 ? 12 : hour}:$minute $period';
+}
