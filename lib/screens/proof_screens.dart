@@ -283,6 +283,10 @@ class GoalsScreen extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(child: label(g.name, size: 18, bold: true)),
+                      InkWell(
+                        onTap: () => go(context, '/add-goal'),
+                        child: label('Edit', size: 13, color: green),
+                      ),
                     ],
                   ),
                   gap(8),
