@@ -481,6 +481,32 @@ class CameraScreen extends StatelessWidget {
               ),
             ),
             gap(16),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0xFF3A4A44)),
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFF2A3C36), Color(0xFF13221E)],
+                  ),
+                ),
+                child: Center(
+                  child: FractionallySizedBox(
+                    widthFactor: .7,
+                    heightFactor: .55,
+                    child: CustomPaint(
+                      painter: DashedBorder(
+                        color: const Color(0xFF7E8F86),
+                        radius: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            gap(20),
           ],
         ),
       ),
