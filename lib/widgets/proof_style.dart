@@ -48,3 +48,30 @@ Widget primary(String title, VoidCallback onPressed, {bool outlined = false}) {
   return SizedBox(width: double.infinity, height: 46, child: button);
 }
 
+OutlineInputBorder _fieldBorder(Color color) => OutlineInputBorder(
+  borderRadius: BorderRadius.circular(4),
+  borderSide: BorderSide(color: color),
+);
+
+Widget field(String hint, {String? value, bool password = false}) =>
+    TextFormField(
+      initialValue: value,
+      obscureText: password,
+      autocorrect: false,
+      enableSuggestions: !password,
+      style: const TextStyle(fontSize: 15),
+      decoration: InputDecoration(
+        hintText: hint,
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 14,
+          vertical: 13,
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        border: _fieldBorder(line),
+        enabledBorder: _fieldBorder(line),
+        focusedBorder: _fieldBorder(green),
+        hintStyle: const TextStyle(color: Color(0xFF8F9B95), fontSize: 15),
+      ),
+    );
