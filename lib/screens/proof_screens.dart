@@ -78,7 +78,58 @@ class ProofPage extends StatelessWidget {
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => Scaffold(
+    body: SafeArea(
+      child: LayoutBuilder(
+        builder:
+            (context, box) => SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                  30,
+                  math.max(72, box.maxHeight * .15),
+                  30,
+                  24,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(child: label('Proof', size: 34, bold: true)),
+                    gap(12),
+                    Center(
+                      child: Text(
+                        'Habit check-ins\nwith friends',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: muted,
+                          fontSize: 16,
+                          height: 1.15,
+                        ),
+                      ),
+                    ),
+                    gap(38),
+                    label('Username', size: 12),
+                    gap(6),
+                    field('yourusername'),
+                    gap(14),
+                    label('Password', size: 12),
+                    gap(6),
+                    field('••••••••', password: true),
+                    gap(22),
+                    primary('Sign in', () => go(context, '/today')),
+                    gap(12),
+                    Center(
+                      child: TextButton(
+                        onPressed: uiOnly,
+                        child: const Text('Create an account'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+      ),
+    ),
+  );
 }
 
 class TodayScreen extends StatelessWidget {
