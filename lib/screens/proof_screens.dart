@@ -291,6 +291,13 @@ class GoalsScreen extends StatelessWidget {
                     color: muted,
                     size: 13,
                   ),
+                  gap(10),
+                  chip(
+                    viewers(g).isEmpty
+                        ? 'Only you'
+                        : 'Visible to ${viewers(g).map((u) => u.displayName).join(', ')}',
+                    private: viewers(g).isEmpty,
+                  ),
                 ],
               ),
             ),
