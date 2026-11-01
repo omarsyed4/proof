@@ -38,3 +38,13 @@ Widget card(Widget child, {EdgeInsets padding = const EdgeInsets.all(16)}) =>
       ),
       child: child,
     );
+Widget primary(String title, VoidCallback onPressed, {bool outlined = false}) {
+  final Widget button;
+  if (outlined) {
+    button = OutlinedButton(onPressed: onPressed, child: Text(title));
+  } else {
+    button = FilledButton(onPressed: onPressed, child: Text(title));
+  }
+  return SizedBox(width: double.infinity, height: 46, child: button);
+}
+
