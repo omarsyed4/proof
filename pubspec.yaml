@@ -1,0 +1,11 @@
+name: proof_initial_ui
+description: Proof - Checkpoint 4 static Flutter UI.
+publish_to: none
+version: 1.0.0+1
+environment:
+  sdk: ^3.7.2
+dependencies:
+  flutter:
+    sdk: flutter
+flutter:
+  uses-material-design: true
