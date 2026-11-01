@@ -327,7 +327,52 @@ class GoalsScreen extends StatelessWidget {
 class AddGoalScreen extends StatelessWidget {
   const AddGoalScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Add a goal',
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          label('Goal name', size: 12),
+          gap(6),
+          field('', value: myGoals.first.name),
+          gap(14),
+        ],
+      ),
+    ),
+  );
+  Widget _step(String title, {bool strong = false}) => Container(
+    width: 58,
+    height: 46,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      border: Border.all(color: line),
+      borderRadius: BorderRadius.circular(4),
+    ),
+    child: label(
+      title,
+      size: 18,
+      color: strong ? ink : const Color(0xFF95A19A),
+      bold: strong,
+    ),
+  );
+  Widget _proof(String title, String subtitle, bool selected) => Container(
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: selected ? pale : Colors.white,
+      borderRadius: BorderRadius.circular(9),
+      border: Border.all(color: selected ? green : line),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        label(title, size: 17),
+        gap(4),
+        label(subtitle, size: 12, color: muted),
+      ],
+    ),
+  );
 }
 
 class CameraScreen extends StatelessWidget {
