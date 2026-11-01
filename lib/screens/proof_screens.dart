@@ -541,7 +541,26 @@ class CameraScreen extends StatelessWidget {
 class PostScreen extends StatelessWidget {
   const PostScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Post check-in',
+    child: LayoutBuilder(
+      builder:
+          (context, box) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: box.maxHeight),
+              child: IntrinsicHeight(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    photo(height: math.min(430, box.maxHeight * .55)),
+                    gap(12),
+                  ],
+                ),
+              ),
+            ),
+          ),
+    ),
+  );
 }
 
 class FeedScreen extends StatelessWidget {
