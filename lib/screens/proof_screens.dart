@@ -272,7 +272,25 @@ class GoalsScreen extends StatelessWidget {
     child: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [label('Week of Sep 14', color: muted), gap(10)],
+        children: [
+          label('Week of Sep 14', color: muted),
+          gap(10),
+          for (final g in myGoals) ...[
+            card(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(child: label(g.name, size: 18, bold: true)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            gap(14),
+          ],
+        ],
       ),
     ),
   );
