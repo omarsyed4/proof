@@ -693,6 +693,30 @@ class FriendsScreen extends StatelessWidget {
         children: [
           label('Your group · ${acceptedFriends.length} people', color: muted),
           gap(10),
+          card(
+            Column(
+              children: [
+                for (int i = 0; i < acceptedFriends.length; i++) ...[
+                  if (i > 0) const Divider(height: 20, color: line),
+                  Row(
+                    children: [
+                      avatar(acceptedFriends[i].displayName),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: label(
+                          acceptedFriends[i].displayName,
+                          size: 16,
+                          bold: true,
+                        ),
+                      ),
+                      chip('Accepted'),
+                    ],
+                  ),
+                ],
+              ],
+            ),
+          ),
+          gap(14),
         ],
       ),
     ),
