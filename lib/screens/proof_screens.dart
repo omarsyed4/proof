@@ -541,7 +541,53 @@ class CameraScreen extends StatelessWidget {
 class PostScreen extends StatelessWidget {
   const PostScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Post check-in',
+    child: LayoutBuilder(
+      builder:
+          (context, box) => SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: box.maxHeight),
+              child: IntrinsicHeight(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    photo(height: math.min(430, box.maxHeight * .55)),
+                    gap(12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        label('Gym', size: 18, bold: true),
+                        label('Just now', size: 12),
+                      ],
+                    ),
+                    gap(12),
+                    label('Note (optional)', size: 12),
+                    gap(6),
+                    field('Say something about today...'),
+                    gap(20),
+                    const Spacer(),
+                    primary('Post check-in', uiOnly),
+                    gap(8),
+                    Center(
+                      child: TextButton(
+                        onPressed: () => go(context, '/camera'),
+                        child: const Text(
+                          'Retake',
+                          style: TextStyle(
+                            color: muted,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+    ),
+  );
 }
 
 class FeedScreen extends StatelessWidget {
