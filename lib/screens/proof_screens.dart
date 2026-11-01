@@ -835,6 +835,25 @@ class RemindersScreen extends StatelessWidget {
                 'Quiet hours',
                 '${reminderSettings.quietHoursStart} – ${reminderSettings.quietHoursEnd}',
               ),
+              const Divider(height: 22, color: line),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  label('Stop when I check in', bold: true),
+                  SizedBox(
+                    height: 25,
+                    width: 42,
+                    child: FittedBox(
+                      child: Switch(
+                        value: reminderSettings.stopOnCheckin,
+                        onChanged: (_) {},
+                        activeColor: Colors.white,
+                        activeTrackColor: green,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
