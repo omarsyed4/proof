@@ -890,6 +890,14 @@ class RemindersScreen extends StatelessWidget {
             child: const Text('Delete my account'),
           ),
         ),
+        const Spacer(),
+        Center(
+          child: label(
+            'More than two reminders a day is how people mute the app, then forget it.',
+            color: muted,
+            size: 12,
+          ),
+        ),
       ],
     ),
   );
