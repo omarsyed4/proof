@@ -879,6 +879,17 @@ class RemindersScreen extends StatelessWidget {
           ),
         ),
         gap(14),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton(
+            onPressed: uiOnly,
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              foregroundColor: const Color(0xFFBD341F),
+            ),
+            child: const Text('Delete my account'),
+          ),
+        ),
       ],
     ),
   );
