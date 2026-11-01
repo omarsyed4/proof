@@ -267,7 +267,61 @@ Widget _friendRow(CheckIn c) => Row(
 class GoalsScreen extends StatelessWidget {
   const GoalsScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Goals',
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          label('Week of Sep 14', color: muted),
+          gap(10),
+          for (final g in myGoals) ...[
+            card(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(child: label(g.name, size: 18, bold: true)),
+                      InkWell(
+                        onTap: () => go(context, '/add-goal'),
+                        child: label('Edit', size: 13, color: green),
+                      ),
+                    ],
+                  ),
+                  gap(8),
+                  label(
+                    '${g.proofType == ProofType.photo ? 'Photo' : 'Confirm'} · ${g.targetCount} times',
+                    color: muted,
+                    size: 13,
+                  ),
+                  gap(10),
+                  chip(
+                    viewers(g).isEmpty
+                        ? 'Only you'
+                        : 'Visible to ${viewers(g).map((u) => u.displayName).join(', ')}',
+                    private: viewers(g).isEmpty,
+                  ),
+                ],
+              ),
+            ),
+            gap(14),
+          ],
+          SizedBox(
+            width: double.infinity,
+            height: 48,
+            child: CustomPaint(
+              painter: DashedBorder(),
+              child: TextButton(
+                onPressed: () => go(context, '/add-goal'),
+                child: const Text('+  Add a goal'),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 class AddGoalScreen extends StatelessWidget {
