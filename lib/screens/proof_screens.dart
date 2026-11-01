@@ -135,7 +135,75 @@ class SignInScreen extends StatelessWidget {
 class TodayScreen extends StatelessWidget {
   const TodayScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Your week',
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InkWell(
+            onTap: () => go(context, '/week'),
+            child: card(
+              Column(
+                children: [
+                  for (final g in myGoals) ...[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        label(g.name, size: 16, bold: true),
+                        label(
+                          '${checkInsFor(g).length} of ${g.targetCount}',
+                          size: 12,
+                          color: muted,
+                        ),
+                      ],
+                    ),
+                    gap(8),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: LinearProgressIndicator(
+                        value: checkInsFor(g).length / g.targetCount,
+                        minHeight: 10,
+                        backgroundColor: pale,
+                        color: green,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+  Widget _openGoal(
+    String name,
+    String action,
+    Color color,
+    VoidCallback onTap,
+  ) => InkWell(
+    onTap: onTap,
+    child: card(
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 34,
+            height: 34,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(9),
+            ),
+          ),
+          gap(5),
+          label(name, size: 16, bold: true),
+          gap(8),
+          label('$action  ›', color: green, bold: true, size: 13),
+        ],
+      ),
+    ),
+  );
 }
 
 Widget _friendRow(CheckIn c) => Row(
