@@ -186,6 +186,15 @@ class TodayScreen extends StatelessWidget {
                   () => go(context, '/camera'),
                 ),
               ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: _openGoal(
+                  'Reading',
+                  'Log 20 min',
+                  const Color(0xFFFBEBD3),
+                  uiOnly,
+                ),
+              ),
             ],
           ),
         ],
