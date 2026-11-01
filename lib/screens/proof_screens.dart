@@ -197,6 +197,23 @@ class TodayScreen extends StatelessWidget {
               ),
             ],
           ),
+          gap(12),
+          label('FRIENDS TODAY', size: 13, color: muted),
+          gap(12),
+          InkWell(
+            onTap: () => go(context, '/feed'),
+            child: card(
+              Column(
+                children: [
+                  for (final c in friendCheckIns)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 7),
+                      child: _friendRow(c),
+                    ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     ),
