@@ -96,3 +96,80 @@ class Reaction {
   );
 }
 
+// Keep the same sample week as the mockups.
+final weekStart = DateTime(2026, 9, 14);
+final users = [
+  User('you', 'yourusername', 'You', 'demo-placeholder', null, weekStart),
+  User('omar', 'omar', 'Omar', 'demo-placeholder', null, weekStart),
+  User('griffin', 'griffin', 'Griffin', 'demo-placeholder', null, weekStart),
+  User('latrell', 'latrell', 'Latrell', 'demo-placeholder', null, weekStart),
+];
+const reminderSettings = ReminderSettings(
+  'settings-you',
+  'you',
+  2,
+  '10 p.m.',
+  '8 a.m.',
+  true,
+);
+final friendships = [
+  for (final id in ['omar', 'griffin', 'latrell'])
+    Friendship('friend-$id', 'you', id, 'accepted', weekStart),
+];
+final goals = [
+  Goal('gym', 'you', 'Gym', ProofType.photo, 4, weekStart),
+  Goal('reading', 'you', 'Reading', ProofType.confirm, 5, weekStart),
+  Goal('omar-gym', 'omar', 'Gym', ProofType.photo, 4, weekStart),
+  Goal('griffin-run', 'griffin', 'Run', ProofType.photo, 3, weekStart),
+];
+const goalShares = [
+  GoalShare('gym', 'omar'),
+  GoalShare('gym', 'griffin'),
+  GoalShare('omar-gym', 'you'),
+  GoalShare('griffin-run', 'you'),
+];
+final checkIns = [
+  CheckIn('gym-m', 'gym', 'demo:green', null, DateTime(2026, 9, 14, 16)),
+  CheckIn('gym-w', 'gym', 'demo:green', null, DateTime(2026, 9, 16, 16)),
+  for (int day = 14; day <= 16; day++)
+    CheckIn('reading-$day', 'reading', null, null, DateTime(2026, 9, day, 20)),
+  CheckIn(
+    'omar-today',
+    'omar-gym',
+    'demo:green',
+    null,
+    DateTime(2026, 9, 16, 16, 12),
+  ),
+  CheckIn(
+    'griffin-today',
+    'griffin-run',
+    'demo:sand',
+    null,
+    DateTime(2026, 9, 16, 7, 2),
+  ),
+];
+final comments = [
+  Comment(
+    'c1',
+    'omar-today',
+    'omar',
+    "that's three this week",
+    DateTime(2026, 9, 16, 16, 13),
+  ),
+  Comment(
+    'c2',
+    'griffin-today',
+    'griffin',
+    'finally',
+    DateTime(2026, 9, 16, 7, 3),
+  ),
+];
+final reactions = [
+  Reaction(
+    'r1',
+    'omar-today',
+    'griffin',
+    'encouragement',
+    DateTime(2026, 9, 16, 16, 14),
+  ),
+];
