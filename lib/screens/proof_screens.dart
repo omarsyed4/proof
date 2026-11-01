@@ -359,6 +359,50 @@ class AddGoalScreen extends StatelessWidget {
             ],
           ),
           gap(14),
+          label('Who can see this', size: 12),
+          gap(6),
+          card(
+            Column(
+              children: [
+                for (final u in acceptedFriends)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 23,
+                          height: 23,
+                          decoration: BoxDecoration(
+                            color:
+                                viewers(myGoals.first).contains(u)
+                                    ? green
+                                    : Colors.white,
+                            borderRadius: BorderRadius.circular(6),
+                            border: Border.all(
+                              color:
+                                  viewers(myGoals.first).contains(u)
+                                      ? green
+                                      : line,
+                            ),
+                          ),
+                          child:
+                              viewers(myGoals.first).contains(u)
+                                  ? const Icon(
+                                    Icons.check,
+                                    color: Colors.white,
+                                    size: 17,
+                                  )
+                                  : null,
+                        ),
+                        const SizedBox(width: 12),
+                        label(u.displayName, size: 16),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          gap(14),
         ],
       ),
     ),
