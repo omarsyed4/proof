@@ -267,7 +267,15 @@ Widget _friendRow(CheckIn c) => Row(
 class GoalsScreen extends StatelessWidget {
   const GoalsScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Goals',
+    child: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [label('Week of Sep 14', color: muted), gap(10)],
+      ),
+    ),
+  );
 }
 
 class AddGoalScreen extends StatelessWidget {
