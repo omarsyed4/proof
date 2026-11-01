@@ -873,6 +873,8 @@ class RemindersScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              gap(22),
+              _setting('Who can see photos', 'Your group'),
             ],
           ),
         ),
