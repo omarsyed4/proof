@@ -723,6 +723,13 @@ class FriendsScreen extends StatelessWidget {
           gap(14),
           primary('Send request', uiOnly),
           gap(12),
+          Center(
+            child: label(
+              'Groups work best with 3 to 5 people.',
+              color: muted,
+              size: 13,
+            ),
+          ),
         ],
       ),
     ),
