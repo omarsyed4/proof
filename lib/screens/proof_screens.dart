@@ -507,6 +507,30 @@ class CameraScreen extends StatelessWidget {
               ),
             ),
             gap(20),
+            Center(
+              child: Semantics(
+                label: 'Shutter: preview post check-in',
+                button: true,
+                child: GestureDetector(
+                  onTap: () => go(context, '/post'),
+                  child: Container(
+                    width: 68,
+                    height: 68,
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 3),
+                    ),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFFF8FAF9),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
