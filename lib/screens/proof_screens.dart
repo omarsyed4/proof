@@ -567,6 +567,8 @@ class PostScreen extends StatelessWidget {
                     field('Say something about today...'),
                     gap(20),
                     const Spacer(),
+                    primary('Post check-in', uiOnly),
+                    gap(8),
                   ],
                 ),
               ),
