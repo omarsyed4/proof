@@ -645,6 +645,18 @@ class FeedScreen extends StatelessWidget {
                               style: const TextStyle(fontSize: 13),
                             ),
                           ),
+                        gap(9),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.chat_bubble_outline,
+                              size: 14,
+                              color: green,
+                            ),
+                            const SizedBox(width: 6),
+                            label('Comment', color: green, size: 13),
+                          ],
+                        ),
                       ],
                     ),
                   ),
