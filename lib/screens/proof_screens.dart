@@ -819,7 +819,29 @@ class WeekScreen extends StatelessWidget {
 class RemindersScreen extends StatelessWidget {
   const RemindersScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Reminders',
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        label('NOTIFICATIONS', color: muted, size: 13),
+        gap(12),
+        card(
+          Column(
+            children: [
+              _setting('Max per day', '${reminderSettings.maxPerDay}'),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+  Widget _setting(String title, String value) => Row(
+    children: [
+      Expanded(child: label(title, bold: true)),
+      label(value, color: muted, size: 13),
+    ],
+  );
 }
 
 // Dashed outlines match the missed-day markers in the mockups.
