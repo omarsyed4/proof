@@ -739,7 +739,81 @@ class FriendsScreen extends StatelessWidget {
 class WeekScreen extends StatelessWidget {
   const WeekScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'This week',
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        label('Sep 14 – 20', color: muted),
+        gap(10),
+        for (final g in myGoals) ...[
+          card(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    label(g.name, size: 18, bold: true),
+                    label(
+                      '${checkInsFor(g).length} of ${g.targetCount}',
+                      color: muted,
+                      size: 13,
+                    ),
+                  ],
+                ),
+                gap(14),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    for (int day = 1; day <= 7; day++)
+                      Column(
+                        children: [
+                          label(
+                            ['M', 'T', 'W', 'Th', 'F', 'Sa', 'Su'][day - 1],
+                            color: muted,
+                            size: 11,
+                          ),
+                          gap(8),
+                          SizedBox(
+                            width: 19,
+                            height: 19,
+                            child:
+                                checkInsFor(g).any((c) => c.dayOfWeek == day)
+                                    ? Container(
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: green,
+                                      ),
+                                    )
+                                    : CustomPaint(
+                                      painter: DashedBorder(radius: 10),
+                                    ),
+                          ),
+                        ],
+                      ),
+                  ],
+                ),
+                if (g.id == 'gym') ...[
+                  gap(10),
+                  label("Misses are dashes, not X's", color: muted, size: 12),
+                ],
+              ],
+            ),
+          ),
+          gap(14),
+        ],
+        const Spacer(),
+        Center(
+          child: Text(
+            'No streak counter on this screen.\nOne missed Tuesday does not erase the week.',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: muted, fontSize: 13, height: 1.2),
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 class RemindersScreen extends StatelessWidget {
