@@ -349,6 +349,16 @@ class AddGoalScreen extends StatelessWidget {
             ],
           ),
           gap(14),
+          label('Proof', size: 12),
+          gap(6),
+          Row(
+            children: [
+              Expanded(child: _proof('Photo', 'default', true)),
+              const SizedBox(width: 12),
+              Expanded(child: _proof('Confirm', 'no camera', false)),
+            ],
+          ),
+          gap(14),
         ],
       ),
     ),
