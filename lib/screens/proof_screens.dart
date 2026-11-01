@@ -285,6 +285,12 @@ class GoalsScreen extends StatelessWidget {
                       Expanded(child: label(g.name, size: 18, bold: true)),
                     ],
                   ),
+                  gap(8),
+                  label(
+                    '${g.proofType == ProofType.photo ? 'Photo' : 'Confirm'} · ${g.targetCount} times',
+                    color: muted,
+                    size: 13,
+                  ),
                 ],
               ),
             ),
