@@ -593,7 +593,35 @@ class PostScreen extends StatelessWidget {
 class FeedScreen extends StatelessWidget {
   const FeedScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Feed',
+    child: SingleChildScrollView(
+      child: Column(
+        children: [
+          for (final c in friendCheckIns) ...[
+            card(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(10),
+                    ),
+                    child: photo(
+                      height: 220,
+                      second: c.photoUrl == 'demo:sand',
+                    ),
+                  ),
+                ],
+              ),
+              padding: EdgeInsets.zero,
+            ),
+            gap(14),
+          ],
+        ],
+      ),
+    ),
+  );
 }
 
 class FriendsScreen extends StatelessWidget {
