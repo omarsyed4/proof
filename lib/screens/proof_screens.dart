@@ -794,11 +794,23 @@ class WeekScreen extends StatelessWidget {
                       ),
                   ],
                 ),
+                if (g.id == 'gym') ...[
+                  gap(10),
+                  label("Misses are dashes, not X's", color: muted, size: 12),
+                ],
               ],
             ),
           ),
           gap(14),
         ],
+        const Spacer(),
+        Center(
+          child: Text(
+            'No streak counter on this screen.\nOne missed Tuesday does not erase the week.',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: muted, fontSize: 13, height: 1.2),
+          ),
+        ),
       ],
     ),
   );
