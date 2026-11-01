@@ -554,6 +554,14 @@ class PostScreen extends StatelessWidget {
                   children: [
                     photo(height: math.min(430, box.maxHeight * .55)),
                     gap(12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        label('Gym', size: 18, bold: true),
+                        label('Just now', size: 12),
+                      ],
+                    ),
+                    gap(12),
                   ],
                 ),
               ),
