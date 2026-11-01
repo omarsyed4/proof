@@ -614,7 +614,39 @@ class FeedScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
-                    child: Column(children: [_friendRow(c)]),
+                    child: Column(
+                      children: [
+                        _friendRow(c),
+                        gap(10),
+                        // Keep the written comment above the quick reaction.
+                        for (final comment in comments.where(
+                          (comment) => comment.checkinId == c.id,
+                        ))
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: paper,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text:
+                                        '${userFor(comment.authorUserId).displayName}: ',
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(text: '“${comment.text}”'),
+                                ],
+                              ),
+                              style: const TextStyle(fontSize: 13),
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
                 ],
               ),
