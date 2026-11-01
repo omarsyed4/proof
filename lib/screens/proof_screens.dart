@@ -674,6 +674,8 @@ class FeedScreen extends StatelessWidget {
             ),
             gap(14),
           ],
+          label('Only people in your group', color: muted, size: 12),
+          gap(10),
         ],
       ),
     ),
