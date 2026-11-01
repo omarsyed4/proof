@@ -461,7 +461,81 @@ class AddGoalScreen extends StatelessWidget {
 class CameraScreen extends StatelessWidget {
   const CameraScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: const Color(0xFF13221E),
+    body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(22, 12, 22, 22),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 32,
+              height: 32,
+              child: IconButton(
+                tooltip: 'Close camera',
+                padding: EdgeInsets.zero,
+                style: IconButton.styleFrom(backgroundColor: Colors.white12),
+                onPressed: () => go(context, '/today'),
+                icon: const Icon(Icons.close, size: 17, color: Colors.white),
+              ),
+            ),
+            gap(16),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: const Color(0xFF3A4A44)),
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFF2A3C36), Color(0xFF13221E)],
+                  ),
+                ),
+                child: Center(
+                  child: FractionallySizedBox(
+                    widthFactor: .7,
+                    heightFactor: .55,
+                    child: CustomPaint(
+                      painter: DashedBorder(
+                        color: const Color(0xFF7E8F86),
+                        radius: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            gap(20),
+            Center(
+              child: Semantics(
+                label: 'Shutter: preview post check-in',
+                button: true,
+                child: GestureDetector(
+                  onTap: () => go(context, '/post'),
+                  child: Container(
+                    width: 68,
+                    height: 68,
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 3),
+                    ),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFFF8FAF9),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 class PostScreen extends StatelessWidget {
