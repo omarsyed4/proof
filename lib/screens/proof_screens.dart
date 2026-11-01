@@ -417,6 +417,8 @@ class AddGoalScreen extends StatelessWidget {
             ],
           ),
           gap(26),
+          primary('Pause this week', uiOnly, outlined: true),
+          gap(16),
         ],
       ),
     ),
