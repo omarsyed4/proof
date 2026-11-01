@@ -739,7 +739,37 @@ class FriendsScreen extends StatelessWidget {
 class WeekScreen extends StatelessWidget {
   const WeekScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'This week',
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        label('Sep 14 – 20', color: muted),
+        gap(10),
+        for (final g in myGoals) ...[
+          card(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    label(g.name, size: 18, bold: true),
+                    label(
+                      '${checkInsFor(g).length} of ${g.targetCount}',
+                      color: muted,
+                      size: 13,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          gap(14),
+        ],
+      ],
+    ),
+  );
 }
 
 class RemindersScreen extends StatelessWidget {
