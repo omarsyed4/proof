@@ -45,7 +45,25 @@ class ProofPage extends StatelessWidget {
             SizedBox(
               height: 36,
               child: Row(
-                children: [Expanded(child: label(title, size: 28, bold: true))],
+                children: [
+                  Expanded(child: label(title, size: 28, bold: true)),
+                  PopupMenuButton<String>(
+                    tooltip: 'Screens',
+                    padding: EdgeInsets.zero,
+                    iconSize: 20,
+                    color: Colors.white,
+                    icon: const Icon(Icons.menu_rounded, color: muted),
+                    onSelected: (route) => go(context, route),
+                    itemBuilder:
+                        (_) => [
+                          for (int i = 0; i < screenNames.length; i++)
+                            PopupMenuItem(
+                              value: screenRoutes[i],
+                              child: Text(screenNames[i]),
+                            ),
+                        ],
+                  ),
+                ],
               ),
             ),
             gap(4),
