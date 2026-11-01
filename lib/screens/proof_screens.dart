@@ -461,7 +461,31 @@ class AddGoalScreen extends StatelessWidget {
 class CameraScreen extends StatelessWidget {
   const CameraScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: const Color(0xFF13221E),
+    body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(22, 12, 22, 22),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 32,
+              height: 32,
+              child: IconButton(
+                tooltip: 'Close camera',
+                padding: EdgeInsets.zero,
+                style: IconButton.styleFrom(backgroundColor: Colors.white12),
+                onPressed: () => go(context, '/today'),
+                icon: const Icon(Icons.close, size: 17, color: Colors.white),
+              ),
+            ),
+            gap(16),
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 class PostScreen extends StatelessWidget {
