@@ -173,6 +173,21 @@ class TodayScreen extends StatelessWidget {
               ),
             ),
           ),
+          gap(12),
+          label('STILL OPEN TODAY', size: 13, color: muted),
+          gap(12),
+          Row(
+            children: [
+              Expanded(
+                child: _openGoal(
+                  'Gym',
+                  'Take proof',
+                  pale,
+                  () => go(context, '/camera'),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     ),
