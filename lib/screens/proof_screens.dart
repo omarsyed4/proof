@@ -117,6 +117,12 @@ class SignInScreen extends StatelessWidget {
                     gap(22),
                     primary('Sign in', () => go(context, '/today')),
                     gap(12),
+                    Center(
+                      child: TextButton(
+                        onPressed: uiOnly,
+                        child: const Text('Create an account'),
+                      ),
+                    ),
                   ],
                 ),
               ),
