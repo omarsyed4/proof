@@ -721,6 +721,8 @@ class FriendsScreen extends StatelessWidget {
           gap(6),
           field('username'),
           gap(14),
+          primary('Send request', uiOnly),
+          gap(12),
         ],
       ),
     ),
