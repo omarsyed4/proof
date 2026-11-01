@@ -819,7 +819,94 @@ class WeekScreen extends StatelessWidget {
 class RemindersScreen extends StatelessWidget {
   const RemindersScreen({super.key});
   @override
-  Widget build(BuildContext context) => const Scaffold();
+  Widget build(BuildContext context) => ProofPage(
+    title: 'Reminders',
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        label('NOTIFICATIONS', color: muted, size: 13),
+        gap(12),
+        card(
+          Column(
+            children: [
+              _setting('Max per day', '${reminderSettings.maxPerDay}'),
+              const Divider(height: 22, color: line),
+              _setting(
+                'Quiet hours',
+                '${reminderSettings.quietHoursStart} – ${reminderSettings.quietHoursEnd}',
+              ),
+              const Divider(height: 22, color: line),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  label('Stop when I check in', bold: true),
+                  SizedBox(
+                    height: 25,
+                    width: 42,
+                    child: FittedBox(
+                      child: Switch(
+                        value: reminderSettings.stopOnCheckin,
+                        onChanged: (_) {},
+                        activeColor: Colors.white,
+                        activeTrackColor: green,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        gap(14),
+        label('PHOTOS', color: muted, size: 13),
+        gap(12),
+        card(
+          Column(
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: InkWell(
+                  onTap: uiOnly,
+                  child: label(
+                    'Delete my check-ins',
+                    color: const Color(0xFFBD341F),
+                  ),
+                ),
+              ),
+              gap(22),
+              _setting('Who can see photos', 'Your group'),
+            ],
+          ),
+        ),
+        gap(14),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton(
+            onPressed: uiOnly,
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              foregroundColor: const Color(0xFFBD341F),
+            ),
+            child: const Text('Delete my account'),
+          ),
+        ),
+        const Spacer(),
+        Center(
+          child: label(
+            'More than two reminders a day is how people mute the app, then forget it.',
+            color: muted,
+            size: 12,
+          ),
+        ),
+      ],
+    ),
+  );
+  Widget _setting(String title, String value) => Row(
+    children: [
+      Expanded(child: label(title, bold: true)),
+      label(value, color: muted, size: 13),
+    ],
+  );
 }
 
 // Dashed outlines match the missed-day markers in the mockups.
